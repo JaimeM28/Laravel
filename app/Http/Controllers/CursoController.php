@@ -17,7 +17,7 @@ class CursoController extends Controller
         return "Crear curso ";
     }
     //Mostrar elemento en particular de la ruta
-    public function show(){
+    public function show($curso){
         return "bienvenido al $curso";
     }
 }
