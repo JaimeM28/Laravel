@@ -14,26 +14,23 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
-Route::get('/', function () {
-    // return view('welcome');
-    return "Hola crayola";
-});
+//LLamando al controlador 
+Route::get('/', HomeController::class);
 
 Route::get('cursos', function(){
-    return "Bienvenido a la pagina curso";
+   
 });
 
 //ruta estatica, debe ir antes de una con variable 
 Route::get('cursos/create', function(){
-    return "Crear curso ";
+   
 });
 
 
 //Creación de ruta con variable, se pone entre corchetes en url
 //y luego la función anonima recibe la variable 
 Route::get('cursos/{curso}', function($curso){
-    return "bienvenido al $curso";
+   
 });
 
 // //ruta con dos variables 
@@ -43,14 +40,14 @@ Route::get('cursos/{curso}', function($curso){
 
 //Si se añade signo de interrogación, será opcional. Se debe inicializar la variable opcional
 //en null 
-Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria=null) {
-    if($categoria){
-        return "bienvenido al $curso de la categoria $categoria";
-    }else {
-        return "Bienvenido al curso: $curso";
-    }
+// Route::get('cursos/{curso}/{categoria?}', function ($curso, $categoria=null) {
+//     if($categoria){
+//         return "bienvenido al $curso de la categoria $categoria";
+//     }else {
+//         return "Bienvenido al curso: $curso";
+//     }
    
-});
+// });
 
 
 
