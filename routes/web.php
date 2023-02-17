@@ -20,17 +20,20 @@ use App\Http\Controllers\CursoController;
 //LLamando al controlador 
 Route::get('/', HomeController::class);
 
-//para usar metodo especifico de la ruta, se usa un array
-// el segundo elemento es la función a usar 
-Route::get('cursos', [CursoController::class, 'index']);
+/* Las rutas se pueden agrupar, para reducir codigo y llevar una manejo, mediante group.
+Se define una función (Controller) que usará al controlador y dentro del parentesis se pone el nombre del controlador a utilizar 
+*/ 
 
-//ruta estatica, debe ir antes de una con variable 
-Route::get('cursos/create', [CursoController::class,'create']);
+Route::controller(CursoController::class)->group(function () {
+    //Unicamente se llama el método del controlador 
+    
+    Route::get('cursos', 'index');
+    Route::get('cursos/create', 'create');
+    Route::get('cursos/{curso}', 'show');
+});
 
 
-//Creación de ruta con variable, se pone entre corchetes en url
-//y luego la función anonima recibe la variable 
-Route::get('cursos/{curso}', [CursoController::class, 'show']);
+
 
 // //ruta con dos variables 
 // Route::get('cursos/{curso}/{categoria}', function ($curso, $categoria) {
