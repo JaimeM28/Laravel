@@ -10,7 +10,7 @@ class HomeController extends Controller
     //método invoke es para administrar una unica 
     //ruta 
     public function __invoke(){
-         // return view('welcome');
-    return "Holaaaa";
+        //mediante el método view se retornan las vistas 
+        return view('home');
     }
 }
