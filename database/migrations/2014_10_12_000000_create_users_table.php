@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('email')->unique(); //varchar unico
             $table->timestamp('email_verified_at')->nullable(); //fechas y nullable opcional
             $table->string('password');
+            $table->string('avatar');
             $table->rememberToken(); //token de sesión
             $table->timestamps(); //2 columnas  created_at (nuevo registro  y update_at (actualización registro)
         });
