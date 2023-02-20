@@ -3,14 +3,17 @@
 //controlador, para evitar usar más codigo 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
     //a la ruta principal por convención se le pone index
     public function index(){
+        //Hacer consulta mediante el modelo 
+        $cursos = Curso::all();
         //para indicar un archivo dentro de una carpeta se usa .
-        return view('cursos.index');
+        return view('cursos.index',compact('cursos'));
     }
 
     //al formulario create
