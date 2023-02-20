@@ -10,8 +10,8 @@ class CursoController extends Controller
 {
     //a la ruta principal por convención se le pone index
     public function index(){
-        //Hacer consulta mediante el modelo 
-        $cursos = Curso::all();
+        //Mas recomendable usar paginate 
+        $cursos = Curso::paginate();
         //para indicar un archivo dentro de una carpeta se usa .
         return view('cursos.index',compact('cursos'));
     }
