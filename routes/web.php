@@ -27,9 +27,10 @@ Se define una función (Controller) que usará al controlador y dentro del paren
 Route::controller(CursoController::class)->group(function () {
     //Unicamente se llama el método del controlador 
     
-    Route::get('cursos', 'index');
-    Route::get('cursos/create', 'create');
-    Route::get('cursos/{curso}', 'show');
+    ///con el método name se le da un nombre a la ruta 
+    Route::get('cursos', 'index')->name('cursos.index');
+    Route::get('cursos/create', 'create')->name('cursos.create');
+    Route::get('cursos/{curso}', 'show')->name('cursos.show');
 });
 
 

@@ -8,6 +8,7 @@ cosas en común y hacer cambios de manera dinamica -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Con el método yield y su argumento (var) se hace una parte dinamica -->
     <title>@yield('title')</title>
+    
 </head>
 <body>
     @yield('content')
