@@ -11,7 +11,7 @@ class CursoController extends Controller
     //a la ruta principal por convención se le pone index
     public function index(){
         //Mas recomendable usar paginate
-        $cursos = Curso::paginate();
+        $cursos = Curso::orderBy('id','desc')->paginate();
         //para indicar un archivo dentro de una carpeta se usa .
         return view('cursos.index',compact('cursos'));
     }
@@ -19,6 +19,16 @@ class CursoController extends Controller
     //al formulario create
     public function create(){
         return view('cursos.create');
+    }
+
+    public function store(Request $request){
+        $curso = new Curso();
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+        $curso->save();
+        return redirect()->route('cursos.show',$curso);
+
     }
     //Mostrar elemento en particular de la ruta
     public function show($id){
@@ -28,5 +38,18 @@ class CursoController extends Controller
         la cual recibira la información */
         $curso = Curso::find($id);
         return view('cursos.show',['curso' => $curso]);
+    }
+
+    public function edit(Curso $curso){
+        return view('cursos.edit',compact('curso'));
+    }
+
+    public function update(Curso $curso, Request $request){
+        $curso->name = $request->name;
+        $curso->descripcion = $request->descripcion;
+        $curso->categoria = $request->categoria;
+        $curso->save();
+        return redirect()->route('cursos.show',$curso);
+
     }
 }

@@ -4,7 +4,9 @@
 
 @section('content') 
     <h1> Crear cursos </h1>
-    <form action=""> 
+ 
+    <form action="{{route('cursos.store')}}" method="POST"> 
+        @csrf
         <label >
             Nombre: <br>
 
@@ -22,9 +24,10 @@
         <label>
             Categoria: <br>
 
-            <input type="text" name="categotia">
+            <input type="text" name="categoria">
         </label>
-        
+        <br>
+        <button type="submit">Enviar</button>
     </form>
 @endsection  
 

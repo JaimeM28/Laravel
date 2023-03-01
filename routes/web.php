@@ -24,18 +24,20 @@ Route::get('/', HomeController::class);
 Se define una función (Controller) que usará al controlador y dentro del parentesis se pone el nombre del controlador a utilizar 
 */ 
 
-Route::controller(CursoController::class)->group(function () {
+
     //Unicamente se llama el método del controlador 
     
     ///con el método name se le da un nombre a la ruta 
-    Route::get('cursos', 'index')->name('cursos.index');
-    Route::get('cursos/create', 'create')->name('cursos.create');
-    Route::get('cursos/{curso}', 'show')->name('cursos.show');
-});
+    Route::get('cursos',[CursoController::class ,'index'])->name('cursos.index');
+    Route::get('cursos/create', [CursoController::class ,'create'])->name('cursos.create');
+    Route::get('cursos/{curso}', [CursoController::class ,'show'])->name('cursos.show');
 
 
+    Route::post('cursos', [CursoController::class ,'store'])->name('cursos.store');
 
-
+    Route::get('cursos/{curso}/edit',[CursoController::class,'edit'])->name('cursos.edit');
+    //Para enviar informacion se usa el metodo put, por convencion 
+    Route::put('cursos/{curso}', [CursoController::class,'update'])->name('cursos.update');
 // //ruta con dos variables 
 // Route::get('cursos/{curso}/{categoria}', function ($curso, $categoria) {
 //     return "bienvenido al $curso de la categoria $categoria";
